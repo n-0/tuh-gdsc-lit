@@ -2,6 +2,11 @@
   "version": "experimental",
   "tags": [
     {
+      "name": "app-router",
+      "path": "./src/app-router.ts",
+      "description": "Routes all subpages."
+    },
+    {
       "name": "my-element",
       "path": "./src/my-element.ts",
       "description": "An example element.",
@@ -16,8 +21,7 @@
           "name": "count",
           "description": "The number of times the button has been clicked.",
           "type": "number",
-          "default": "0"
-        }
+          "default": "0" }
       ],
       "properties": [
         {
