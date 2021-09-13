@@ -9,7 +9,9 @@ import { legacyPlugin } from '@web/dev-server-legacy';
 export default {
   nodeResolve: true,
   preserveSymlinks: true,
-  historyApiFallback: true,
+  open: true,
+  appIndex: 'dev',
+  debug: true,
   plugins: [
     legacyPlugin({
       polyfills: {

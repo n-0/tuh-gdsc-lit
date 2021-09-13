@@ -7,6 +7,7 @@
   "module": "app-router.js",
   "type": "module",
   "scripts": {
+    "start": "tsc --watch & wds --watch",
     "build": "tsc",
     "build:watch": "tsc --watch",
     "clean": "rimraf my-element.{d.ts,d.ts.map,js,js.map} test/my-element.{d.ts,d.ts.map,js,js.map} test/my-element_test.{d.ts,d.ts.map,js,js.map}",
