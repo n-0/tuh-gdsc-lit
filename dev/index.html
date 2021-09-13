@@ -7,7 +7,11 @@
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/lit/polyfill-support.js"></script>
     <script type="module" src="../build/app-router.js"></script>
+    <script type="module" src="../build/app-menu.js"></script>
     <style>
+      * {
+        font-family: "Google Sans",Arial,Helvetica,sans-serif;
+      }
       p {
         border: solid 1px blue;
         padding: 8px;
@@ -15,6 +19,7 @@
     </style>
   </head>
   <body>
+    <app-menu></app-menu>
     <div id="outlet"></div>
   </body>
 </html>
