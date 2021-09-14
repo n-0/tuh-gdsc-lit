@@ -2,132 +2,84 @@ import { LitElement, html, css } from 'lit'
 import { state } from 'lit/decorators'
 import { classMap } from 'lit/directives/class-map'
 import { customElement } from 'lit/decorators'
+import { fadeAnimations } from './styles'
 
 @customElement('app-menu')
 export class AppMenu extends LitElement {
 
-    static styles = css`
-        :host {
-            z-index: 3;
-        }
-
-        .menu-icon-wrapper {
-            position: absolute;
-            right: 25px;
-            top: 25px;
-        }
-        
-        .menu-icon {
-            max-width: 100px;
-        }
-
-        .menu-page {
-            position: absolute;
-            left: 0;
-            right: 0;
-            margin: auto;
-            width: 50vw;
-            text-align: center;
-            opacity: 0.9;
-            background-color: #fff;
-            z-index: 3;
-        }
-
-        .menu-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            margin-top: 18%;
-        }
-
-        .menu-list > li {
-            list-style: none;
-            margin: 10px;
-        }
-
-        .menu-list a {
-            font-size: 2.5em;
-            text-decoration: none;
-            color: #5f6368;
-            opacity: 1;
-        }
-
-        .menu-list a:hover {
-            color: #202124;
-        }
-
-        .menu-open {
-            display: block;
-            animation: fade-in-up 0.3s;
-        }
-
-        .menu-close {
-            animation: fade-out-down 0.3s forwards
-        }
-
-        /* 
-            on first render the menu should not be visible 
-            afterwards animation fade-out-down solves this.
-        */
-        .menu-invisible {
-            display: none;
-        }
-
-        @keyframes fade-in {
-            from { 
-                opacity: 0;
+    static styles = [fadeAnimations, 
+        css`
+            :host {
+                z-index: 3;
             }
-            to {
+
+            .menu-icon-wrapper {
+                display: flex;
+                justify-content: flex-end;
+                z-index: 4;
+            }
+            
+            .menu-icon {
+                max-width: 100px;
+                margin-top: 25px;
+                margin-right: 50px;
+            }
+
+            .menu-page {
+                position: absolute;
+                width: 99vw;
+                text-align: center;
+                opacity: 0.9;
+                background-color: #fff;
+                z-index: 3;
+            }
+
+            .menu-list {
+                margin-top: 100px;
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                align-self: center;
+            }
+
+            .menu-list > li {
+                list-style: none;
+                margin: 10px;
+            }
+
+            .menu-list a {
+                font-size: 2.5em;
+                text-decoration: none;
+                color: #5f6368;
                 opacity: 1;
             }
-        }
 
-        @keyframes fade-out {
-            from { 
-                opacity: 1;
-            }
-            to {
-                opacity: 0;
+            .menu-list a:hover {
+                color: #202124;
             }
 
-        }
-
-        @keyframes fade-in-up {
-            from {
-                transform: translateY(-80px);
-                opacity: 0;
+            .menu-open {
+                animation: fade-in-up 0.3s;
             }
 
-            to {
-                transform: translateY(0);
-                opacity: 0.9;
-            }
-        }
-
-        @keyframes fade-out-down {
-            from {
-                transform: translateY(0);
-                opacity: 0.9;
+            .menu-close {
+                animation: fade-out-down 0.3s forwards
             }
 
-            to {
-                transform: translateY(-80px);
-                opacity: 0;
+            .menu-invisible {
                 display: none;
             }
-        }
-
-    `
+        `]
 
     @state()
     open: boolean = false
     @state()
-    openedBefore: boolean = false
+    hide: boolean = true
 
     render() {
         const links = ['home', 'what', 'when', 'who', 'contact'].map(sub => html`
             <li>
-                <h1> 
+                <h1>
                     <a href="/${sub}">${sub.charAt(0).toUpperCase() + sub.slice(1)} </a>
                 </h1>
             </li>
@@ -149,17 +101,21 @@ export class AppMenu extends LitElement {
             <div class=${classMap({ 
                     'menu-page': true, 
                     'menu-open': this.open, 
-                    'menu-close': !this.open && this.openedBefore,
-                    'menu-invisible': !this.openedBefore })}>
+                    'menu-close': !this.open && !this.hide,
+                    'menu-invisible': this.hide })}
+                @animationend=${(e: AnimationEvent) => (e.animationName == 'fade-out-down') ? this.hide = true : null}
+                @click=${() => this.open = !this.open }
+            >
                 <ul class="menu-list">
                     ${links}
                 </uL>
             </div>
             <div 
                 class="menu-icon-wrapper"
+                @animationend=${(e: AnimationEvent) => (e.animationName == 'fade-in-up') ? this.hide = false : null}
                 @click=${() => { 
                     this.open = !this.open 
-                    this.openedBefore = true 
+                    this.hide = !this.hide
                 }}
             >
             ${menuLogo}
