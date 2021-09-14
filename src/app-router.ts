@@ -9,6 +9,7 @@ const outlet = document.getElementById('outlet')
 const router = new Router(outlet)
 
 router.setRoutes([
+    { path: '/', component: 'app-home' },
     { path: '/home', component: 'app-home' },
     { path: '/what', component: 'app-what' },
     { path: '/when', component: 'app-when' },
