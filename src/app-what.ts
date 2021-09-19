@@ -1,30 +1,29 @@
 import { LitElement, html, css } from 'lit'
 import { customElement, state } from 'lit/decorators'
 import { fadeAnimations, specialColors } from './styles'
+import { card } from './material/card'
 
 const texts = [
     html`
-    <div class="text-area row">
+    <div class="text-area">
         <p>Google Developer Student Clubs are <span class="google-green">community</span> groups  for college and university students interested in Google developer technologies. 
         <p>We are the chapter for the <span class="tuh-blue">TUH</span>!</p>
     </div>
     `,
     html`
-    <div class="text-area row">
+    <div class="text-area">
         <p>Meet students interested in developer technologies at the <span class="tuh-blue">TUH</span>.</p>
         <p>All are welcome, including those with <span class="google-green">diverse</span> backgrounds and different majors.</p>
         <p>No matter if you feel comfortable in front of a laptop, a construction site or a lab.</p>
     </div>
     `,
     html`
-    <div class="text-area row">
-        <p>It is a chance for you to <span class="google-yellow">learn</span> and <span class="google-yellow">grow</span></p> 
-        <p>in a peer to peer environment in domains </p>
-        <p>that our members are <span class="google-red">passionate</span> about.</p>
+    <div class="text-area">
+        <p>It is a chance for you to <span class="google-yellow">learn</span> and <span class="google-yellow">grow</span> in a peer to peer environment in domains that our members are <span class="google-red">passionate</span> about.</p>
     </div>
     `,
     html`
-    <div class="text-area row">
+    <div class="text-area">
         <p>Through hands-on workshops, events, talks, and project-building activities - both online and in-person.</p>
         <p>We strive to <span class="google-blue">solve real life problems</span> and advance our career oriented skills both hard and soft.</p>
     </div>
@@ -53,50 +52,49 @@ const icons = [
         <img class="icon icon-arrow-4" src="https://img.icons8.com/material-outlined/96/000000/down2.png" />
     </div>
     `
-]
+]   
 
 @customElement('app-what')
 export class AppWhat extends LitElement {
 
-    static styles = [fadeAnimations, specialColors, 
+    static styles = [fadeAnimations, specialColors, card,
         css`
             .flex {
                 display: flex;
-                justify-content: space-around;
-            }
-            .row{
+                justify-content: space-between;
                 flex-direction: row;
             }
-            .column{
-                flex-direction: column;
-            }
+
             .what {
                 box-sizing: border-box;
                 height: auto;
                 width: auto;
+                margin: 3rem 2rem;
+            }
+
+            .container {
+                align-items: center;
+                padding: 2rem 4rem 2rem 3.625rem;
             }
 
             .title {
                 box-sizing: border-box;
                 display: flex;
                 justify-content: flex-start;
-                padding-left: 1em;
-                font-size: 2em;
+                font-size: 2rem;
                 color: #5f6368;
                 width: 100%;
             }
 
             .text-area {
                 box-sizing: border-box;
-                font-size: 1.5em;
+                font-size: 1.2rem;
                 animation: fade-in 1.5s cubic-bezier(.35,0,.15,1);
             }
 
             .icon-area {
                 display: flex;
-                justify-items: center;
                 justify-content: space-evenly;
-                align-items: center;
                 animation: fade-in 0.3s cubic-bezier(.35,0,.15,1);
             }
 
@@ -107,7 +105,7 @@ export class AppWhat extends LitElement {
             }
 
             .icon {
-                width: 100px;
+                width: 5.5rem;
             }
 
             .icon-arrow-1 {
@@ -122,15 +120,34 @@ export class AppWhat extends LitElement {
                 transform: rotate(90deg);
             }
 
+            #text-column, #icon-column{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
             #text-column {
                 width: 50vw;
-                padding: 1em;
             }
 
             #icon-column {
-                width: 40vw;
-                padding: 1em;
+                width: 30vw;
             }
+
+            @media (max-width: 800px){
+                .container{
+                    padding: 1rem;
+                }
+                .flex{
+                    flex-direction: column;
+                }
+            
+                #text-column, #icon-column {
+                    width: 70vw;
+                }
+
+            }
+
     `]
 
     @state()
@@ -138,13 +155,15 @@ export class AppWhat extends LitElement {
 
     render() {
         return html`
-            <div class="title"><h1>What?</h1></div>
-            <div class="what flex" @click=${() => (this.frame < 3) ? this.frame++ : null}>
-                <div class="column" id="text-column">
-                    ${texts[this.frame]}
-                </div>
-                <div class="column" id="icon-column">
-                    ${[0, 1].includes(this.frame) ? icons[0] : icons[1]}
+            <div class="what">
+                <div class="title"><h1>What</h1></div>
+                <div class="container flex mdc-card" @click=${() => (this.frame < 3) ? this.frame++ : this.frame = 0}>
+                    <div id="text-column">
+                        ${texts[this.frame]}
+                    </div>
+                    <div id="icon-column">
+                        ${[0, 1].includes(this.frame) ? icons[0] : icons[1]}
+                    </div>
                 </div>
             </div>
         `
