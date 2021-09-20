@@ -19,6 +19,13 @@ export class AppMenu extends LitElement {
                 z-index: 4;
             }
             
+            .menu-icon-wrapper button {
+                font-family: inherit;
+                border: none;
+                background: inherit;
+                margin: 0;
+            }
+
             .menu-icon {
                 max-width: 100px;
                 margin-top: 25px;
@@ -118,7 +125,9 @@ export class AppMenu extends LitElement {
                     this.hide = !this.hide
                 }}
             >
-            ${menuLogo}
+                <button>
+                    ${menuLogo}
+            </button>
             </div>
         `
     }

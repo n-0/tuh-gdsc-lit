@@ -3,4 +3,5 @@ node_modules/
 /test/
 /build/
 */assets/
+docs/*
 custom-elements.json

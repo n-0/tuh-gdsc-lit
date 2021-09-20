@@ -1,9 +1,37 @@
 import { LitElement, html, css } from 'lit'
-import { customElement } from 'lit/decorators'
+import { customElement, state } from 'lit/decorators'
 import { card } from './material/card'
 import { button } from './material/button'
 import { specialColors } from './styles'
 
+
+interface IEventCard {
+    date: Date;
+    title: string;
+    description: string;
+    link: string;
+}
+
+const demoEvents: IEventCard[] = [
+    {
+        date: new Date(2021, 10, 10),
+        title: 'Quantum Computing',
+        description: 'Playing around with reality.',
+        link: 'http://localhost:8080'
+    },
+    {
+        date: new Date(2021, 11, 11),
+        title: 'Hackathon',
+        description: 'May the force of code be with you.',
+        link: 'http://localhost:8080'
+    },
+    {
+        date: new Date(2021, 12, 12),
+        title: 'Pizza',
+        description: 'Getting to know each others pizza tastes.',
+        link: 'http://localhost:8080'
+    }
+]
 
 @customElement('app-when')
 export class AppWhen extends LitElement {
@@ -26,8 +54,8 @@ export class AppWhen extends LitElement {
 
         .mdc-card {
 			display: grid;
-            height: 350px;
-            width: 300px;
+            height: 420px;
+            width: 320px;
         }
 
 		.mdc-card__media img {
@@ -36,11 +64,12 @@ export class AppWhen extends LitElement {
 
 		.mdc-icon-button.mdc-icon-button {
 			background-color: rgb(26, 115, 232);
+            max-height: 60px;
+            align-self: flex-end;
 			color: #fff;
 			font-family: "Google Sans", Roboto, Arial, Helvetica, sans-serif;
 			font-weight: 500;
 			border: transparent solid 1px;
-			
 			border-radius: 4px;
 			transition: background-color 0.2s ease 0s, box-shadow 0.2s ease 0s, color 0.2s ease 0s, -webkit-box-shadow 0.2s ease 0s;
 		}
@@ -52,19 +81,30 @@ export class AppWhen extends LitElement {
 
 		.mdc-card__content {
 			max-height: 150px;
+            padding: 20px;
 		}
 
-        .past {
+        .mdc-card__title {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .mdc-card__title h1 {
+            margin: 5px;
+            padding-left: 5px;
+        }
+
+        .mdc-card-0 {
             grid-row: 3;
             grid-column: 2;
         }
 
-        .present {
+        .mdc-card-1 {
             grid-row: 2 / 3;
             grid-column: 3;
         }
 
-        .future {
+        .mdc-card-2 {
             grid-row: 3;
             grid-column: 4;
 
@@ -74,45 +114,44 @@ export class AppWhen extends LitElement {
         
    `]
 
+    @state()
+    page = 0
+
     render() {
+
+        const eventCards = demoEvents.slice(this.page, 3*(this.page + 1)).map((event, index) => html`
+            <div class="mdc-card mdc-card-${index}">
+                <div class="mdc-card__title">
+                    <div class="mdc-card__title-date">
+                        <h1>
+                            ${event.date.getDate()}
+                            <br>
+                            ${event.date.getMonth()+1}
+                        </h1>
+                    </div>
+                    <div class="mdc-card__title-text">
+                        <h1>${event.title}</h1>
+                    </div>
+                </div>
+                <div class="mdc-card__media">
+					<img src="src/assets/tuh-gdsc-logo-centered.png" />
+                </div>
+                <div class="mdc-card__content">
+                    ${event.description} 
+                </div>
+				<button class="mdc-icon-button mdc-card__action mdc-card__action--icon">
+					<h2>Register</h2>
+				</button>
+            </div> 
+
+
+        `)
         return html`
         <div class="when">
             <div class="title">
                 <h1>When</h1>
             </div>
-            <div class="mdc-card past">
-                <div class="mdc-card__media">
-					<img src="src/assets/tuh-gdsc-logo-centered.png" />
-                </div>
-                <div class="mdsc-card__content">
-                    past event 
-                </div>
-				<button class="mdc-icon-button mdc-card__action mdc-card__action--icon">
-					<h2>Register</h2>
-				</button>
-            </div> 
-            <div class="mdc-card present">
-                <div class="mdc-card__media">
-					<img src="src/assets/tuh-gdsc-logo-centered.png" />
-                </div>
-                <div class="mdsc-card__content">
-                    present event 
-                </div>
-				<button class="mdc-icon-button mdc-card__action mdc-card__action--icon">
-					<h2>Register</h2>
-				</button>
-            </div> 
-            <div class="mdc-card future">
-                <div class="mdc-card__media">
-					<img src="src/assets/tuh-gdsc-logo-centered.png" />
-                </div>
-                <div class="mdsc-card__content">
-                    future event 
-                </div>
-				<button class="mdc-icon-button mdc-card__action mdc-card__action--icon">
-					<h2>Register</h2>
-				</button>
-            </div> 
+            ${eventCards}
         </div>`
     }
 }

@@ -2,9 +2,83 @@
   "version": "experimental",
   "tags": [
     {
-      "name": "app-router",
-      "path": "./src/app-router.ts",
-      "description": "Routes all subpages."
+      "name": "app-contact",
+      "path": "./src/app-contact.ts"
+    },
+    {
+      "name": "app-home",
+      "path": "./src/app-home.ts",
+      "properties": [
+        {
+          "name": "styles",
+          "type": "CSSResult",
+          "default": "\"css`\\n    .logo-wrapper {\\n      position: fixed;\\n      top: 50%;\\n      left: 50%;\\n      transform: translate(-50%, -50%)\\n    }\\n\\n    .base-wrapper {\\n      display: flex;\\n    }\\n\\n    `\""
+        }
+      ]
+    },
+    {
+      "name": "app-menu",
+      "path": "./src/app-menu.ts",
+      "properties": [
+        {
+          "name": "styles",
+          "type": "CSSResult[]",
+          "default": "[\"fadeAnimations\",null]"
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hide",
+          "type": "boolean",
+          "default": "true"
+        }
+      ]
+    },
+    {
+      "name": "app-what",
+      "path": "./src/app-what.ts",
+      "properties": [
+        {
+          "name": "styles",
+          "type": "CSSResult[]",
+          "default": "[\"fadeAnimations\",\"specialColors\",null]"
+        },
+        {
+          "name": "frame",
+          "type": "number",
+          "default": "0"
+        }
+      ]
+    },
+    {
+      "name": "app-when",
+      "path": "./src/app-when.ts",
+      "properties": [
+        {
+          "name": "styles",
+          "type": "CSSResult[]",
+          "default": "[\"specialColors\",\"button\",\"card\",null]"
+        },
+        {
+          "name": "page",
+          "type": "number",
+          "default": "0"
+        }
+      ]
+    },
+    {
+      "name": "app-who",
+      "path": "./src/app-who.ts",
+      "properties": [
+        {
+          "name": "styles",
+          "type": "CSSResult",
+          "default": "\"css`\\n        .who {\\n            display: grid;\\n            grid-template-rows: 200px 100px 400px;\\n            grid-template-columns: 335px 670px 670px 335px;\\n            gap: 25px;\\n            height: 800px;\\n        }\\n\\n        .title {\\n            grid-row: 1;\\n            grid-column: 2;\\n            font-size: 2.8em;\\n            color: #5f6368;\\n        }\\n      `\""
+        }
+      ]
     },
     {
       "name": "my-element",
@@ -21,9 +95,15 @@
           "name": "count",
           "description": "The number of times the button has been clicked.",
           "type": "number",
-          "default": "0" }
+          "default": "0"
+        }
       ],
       "properties": [
+        {
+          "name": "styles",
+          "type": "CSSResult",
+          "default": "\"css`\\n    :host {\\n      display: block;\\n      border: solid 1px gray;\\n      padding: 16px;\\n      max-width: 800px;\\n    }\\n  `\""
+        },
         {
           "name": "name",
           "attribute": "name",
@@ -37,24 +117,6 @@
           "description": "The number of times the button has been clicked.",
           "type": "number",
           "default": "0"
-        },
-        {
-          "name": "renderRoot",
-          "description": "Node or ShadowRoot into which element DOM should be rendered. Defaults\nto an open shadowRoot.",
-          "type": "HTMLElement | ShadowRoot"
-        },
-        {
-          "name": "isUpdatePending",
-          "type": "boolean"
-        },
-        {
-          "name": "hasUpdated",
-          "type": "boolean"
-        },
-        {
-          "name": "updateComplete",
-          "description": "Returns a Promise that resolves when the element has completed updating.\nThe Promise value is a boolean that is `true` if the element completed the\nupdate without triggering another update. The Promise result is `false` if\na property was set inside `updated()`. If the Promise is rejected, an\nexception was thrown during the update.\n\nTo await additional asynchronous work, override the `getUpdateComplete`\nmethod. For example, it is sometimes useful to await a rendered element\nbefore fulfilling this Promise. To do this, first await\n`super.getUpdateComplete()`, then any subsequent state.",
-          "type": "Promise<boolean>"
         }
       ],
       "slots": [
