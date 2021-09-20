@@ -9,6 +9,7 @@ import { legacyPlugin } from '@web/dev-server-legacy';
 export default {
   nodeResolve: true,
   preserveSymlinks: true,
+  hot: true,
   open: true,
   appIndex: 'dev',
   debug: true,

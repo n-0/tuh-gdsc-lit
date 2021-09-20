@@ -7,7 +7,7 @@
   "module": "app-router.js",
   "type": "module",
   "scripts": {
-    "start": "tsc --watch & wds --watch",
+    "start": "tsc --watch && wds --watch",
     "build": "tsc",
     "build:watch": "tsc --watch",
     "clean": "rimraf my-element.{d.ts,d.ts.map,js,js.map} test/my-element.{d.ts,d.ts.map,js,js.map} test/my-element_test.{d.ts,d.ts.map,js,js.map}",
@@ -37,6 +37,7 @@
   "author": "Google LLC",
   "license": "BSD-3-Clause",
   "dependencies": {
+    "@material/button": "^12.0.0",
     "@material/card": "^12.0.0",
     "@vaadin/router": "^1.7.4",
     "lit": "^2.0.0-rc.1"

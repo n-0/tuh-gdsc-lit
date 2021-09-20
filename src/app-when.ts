@@ -1,12 +1,14 @@
 import { LitElement, html, css } from 'lit'
 import { customElement } from 'lit/decorators'
 import { card } from './material/card'
+import { button } from './material/button'
+import { specialColors } from './styles'
 
 
 @customElement('app-when')
 export class AppWhen extends LitElement {
 
-    static styles = [card, css`
+    static styles = [specialColors, button, card, css`
         .when {
             display: grid;
             grid-template-rows: 200px 100px 400px;
@@ -23,9 +25,34 @@ export class AppWhen extends LitElement {
         }
 
         .mdc-card {
+			display: grid;
             height: 350px;
             width: 300px;
         }
+
+		.mdc-card__media img {
+            width: 300px;
+		}
+
+		.mdc-icon-button.mdc-icon-button {
+			background-color: rgb(26, 115, 232);
+			color: #fff;
+			font-family: "Google Sans", Roboto, Arial, Helvetica, sans-serif;
+			font-weight: 500;
+			border: transparent solid 1px;
+			
+			border-radius: 4px;
+			transition: background-color 0.2s ease 0s, box-shadow 0.2s ease 0s, color 0.2s ease 0s, -webkit-box-shadow 0.2s ease 0s;
+		}
+
+		.mdc-icon-button:hover {
+			background-color: rgb(24, 90, 188);
+			box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+		}
+
+		.mdc-card__content {
+			max-height: 150px;
+		}
 
         .past {
             grid-row: 3;
@@ -42,6 +69,8 @@ export class AppWhen extends LitElement {
             grid-column: 4;
 
         }
+
+
         
    `]
 
@@ -53,27 +82,36 @@ export class AppWhen extends LitElement {
             </div>
             <div class="mdc-card past">
                 <div class="mdc-card__media">
-
+					<img src="src/assets/tuh-gdsc-logo-centered.png" />
                 </div>
                 <div class="mdsc-card__content">
-                    past Event 
+                    past event 
                 </div>
+				<button class="mdc-icon-button mdc-card__action mdc-card__action--icon">
+					<h2>Register</h2>
+				</button>
             </div> 
             <div class="mdc-card present">
                 <div class="mdc-card__media">
-
+					<img src="src/assets/tuh-gdsc-logo-centered.png" />
                 </div>
                 <div class="mdsc-card__content">
-                    present Event 
+                    present event 
                 </div>
+				<button class="mdc-icon-button mdc-card__action mdc-card__action--icon">
+					<h2>Register</h2>
+				</button>
             </div> 
             <div class="mdc-card future">
                 <div class="mdc-card__media">
-
+					<img src="src/assets/tuh-gdsc-logo-centered.png" />
                 </div>
                 <div class="mdsc-card__content">
-                    future Event 
+                    future event 
                 </div>
+				<button class="mdc-icon-button mdc-card__action mdc-card__action--icon">
+					<h2>Register</h2>
+				</button>
             </div> 
         </div>`
     }
@@ -81,6 +119,6 @@ export class AppWhen extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'app-when': AppWhen
+    'app-when': AppWhen;
   }
 }

@@ -1,8 +1,6 @@
 import { LitElement, html, css } from 'lit'
 import { customElement } from 'lit/decorators'
 
-
-      //max-width: 50%;
 @customElement('app-home')
 export class AppHome extends LitElement {
 
@@ -24,7 +22,7 @@ export class AppHome extends LitElement {
       return html`<div class="base-wrapper">
         <div class="logo-wrapper">
           <img 
-            src="src/assets/tuh-gdsc-logo-centered.jpg" 
+            src="src/assets/tuh-gdsc-logo-centered.png" 
             class="logo"
           />
         </div>
@@ -34,6 +32,6 @@ export class AppHome extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'app-home': AppHome
+    'app-home': AppHome;
   }
 }

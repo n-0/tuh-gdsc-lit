@@ -126,6 +126,6 @@ export class AppMenu extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'app-menu': AppMenu
+    'app-menu': AppMenu;
   }
 }
