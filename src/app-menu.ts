@@ -74,7 +74,7 @@ export class AppMenu extends LitElement {
             }
 
             .menu-invisible {
-                display: none;
+                visibility: hidden;
             }
         `]
 
