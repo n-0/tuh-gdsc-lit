@@ -69,11 +69,11 @@ export class AppWhat extends LitElement {
             .what {
                 display: grid;
                 grid-template-rows: 200px 100px 400px;
-                grid-template-columns: 335px 670px 670px 335px;
+                grid-template-columns: 335px 1fr 1fr 335px;
                 justify-content: center; 
                 gap: 25px;
-                height: 800px;
-                width: 99vw;
+                height: 100%px;
+                width: 100%;
             }
 
             .title {

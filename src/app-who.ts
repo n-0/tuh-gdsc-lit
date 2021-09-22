@@ -9,9 +9,9 @@ export class AppWho extends LitElement {
         .who {
             display: grid;
             grid-template-rows: 200px 300px 400px;
-            grid-template-columns: 335px 670px 670px 335px;
+            grid-template-columns: 300px 1fr 1fr 300px;
             gap: 25px;
-            height: 800px;
+            height: 100%;
         }
 
         .title {
@@ -23,7 +23,7 @@ export class AppWho extends LitElement {
 
         .people {
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-evenly;
             grid-row: 3;
             grid-column: 2 / 5;
         }
@@ -47,10 +47,10 @@ export class AppWho extends LitElement {
             </div>
             <h2 class="who-text">
                 Our core team organizes <br>
-                and manages the student club.
-                We are the Umpa Lumpas in the <br>
-                background, so that you can see <br>
-                the coding factory!
+                and manages the student club.<br>
+                We are the Umpa Lumpas in the<br>
+                background, so that you can see<br>
+                the coding factory!<br>
             </h2>
             <div class="people">
                 <person-card 

@@ -14,7 +14,7 @@ const routes = [
     { path: '/what', component: 'app-what' },
     { path: '/when', component: 'app-when' },
     { path: '/who', component: 'app-who' },
-    { path: '/contact', component: 'app-contact' },
+    { path: '/impressum', component: 'app-impressum' },
 ] 
 
 router.setRoutes(routes)
@@ -38,10 +38,10 @@ window.onmousewheel = async (event: MouseEvent) => {
     if (Math.abs(scrollAccumulator) > 500) {
         if (scrollAccumulator > 0 && routeIndex < 6) {
             routeIndex++
-            await router.render(routes[routeIndex].path)
+            await Router.go(routes[routeIndex].path)
         } else if (routeIndex >= 1) {
             routeIndex--
-            await router.render(routes[routeIndex].path)
+            await Router.go(routes[routeIndex].path)
         }
         scrollAccumulator = 0
     }

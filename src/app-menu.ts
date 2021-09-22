@@ -15,6 +15,9 @@ export class AppMenu extends LitElement {
 
             .menu-icon-wrapper {
                 display: flex;
+                position: absolute;
+                top: 20px;
+                right: 20px;
                 justify-content: flex-end;
                 z-index: 4;
             }
@@ -35,6 +38,7 @@ export class AppMenu extends LitElement {
             .menu-page {
                 position: absolute;
                 width: 99vw;
+                height: 99vh;
                 text-align: center;
                 opacity: 0.9;
                 background-color: #fff;
@@ -84,7 +88,7 @@ export class AppMenu extends LitElement {
     hide: boolean = true
 
     render() {
-        const links = ['home', 'what', 'when', 'who', 'contact'].map(sub => html`
+        const links = ['home', 'what', 'when', 'who', 'impressum'].map(sub => html`
             <li>
                 <h1>
                     <a href="/${sub}">${sub.charAt(0).toUpperCase() + sub.slice(1)} </a>
@@ -122,7 +126,7 @@ export class AppMenu extends LitElement {
                 @animationend=${(e: AnimationEvent) => (e.animationName == 'fade-in-up') ? this.hide = false : null}
                 @click=${() => { 
                     this.open = !this.open 
-                    this.hide = !this.hide
+                    this.hide = false
                 }}
             >
                 <button>

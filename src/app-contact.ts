@@ -2,17 +2,23 @@ import { LitElement, html, css } from 'lit'
 import { customElement } from 'lit/decorators'
 
 
-@customElement('app-contact')
-export class AppContact extends LitElement {
+@customElement('app-impressum')
+export class AppImpressum extends LitElement {
 
 
     static styles = css`
-        .contact {
+        :host {
+            height: 100%;
+            width: 100%;
+        }
+
+        .impressum {
             display: grid;
-            grid-template-rows: 200px 300px 400px;
-            grid-template-columns: 335px 670px 670px 335px;
+            grid-template-rows: 200px 1fr;
+            grid-template-columns: 200px 1fr 1fr 200px;
             gap: 25px;
-            height: 800px;
+            width: 100%;
+            height: 100%;
         }
 
         .title {
@@ -21,12 +27,51 @@ export class AppContact extends LitElement {
             font-size: 2.8em;
             color: #5f6368;
         }
+
+        .impressum-details {
+            background-color: rgb(232, 234, 237);
+            grid-row: 2 / 3;
+            grid-column: 1 / 5;
+            display: grid;
+            gap: 25px;
+            grid-template-columns: 200px 1fr 1fr 200px; /* subgrid in the future */
+        }
+
+        .impressum-content {
+            grid-column: 2;
+        }
+
+		button.chapter {
+			background-color: rgb(26, 115, 232);
+            height: 60px;
+            width: 100px; 
+			border: transparent solid 1px;
+			border-radius: 4px;
+			transition: background-color 0.2s ease 0s, box-shadow 0.2s ease 0s, color 0.2s ease 0s, -webkit-box-shadow 0.2s ease 0s;
+		}
+        button.chapter a {
+            text-decoration: none;
+			color: #fff;
+			font-weight: 500;
+			font-family: "Google Sans", Roboto, Arial, Helvetica, sans-serif;
+        }
+        
     `
 
     render() {
-        return html`<div class="contact">
+        return html`<div class="impressum">
             <div class="title">
-                <h1>Contact</h1>
+                <h1>Impressum</h1>
+            </div>
+            <div class="impressum-details">
+                <div class="impressum-content">
+                    <h1>
+                        Contact us via our GDSC Chapter
+                    </h1>
+                    <button class="chapter">
+                        <a href="">Chapter</a>
+                    </button>
+                </div>
             </div>
         </div>`
     }
@@ -34,6 +79,6 @@ export class AppContact extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'app-contact': AppContact
+    'app-impressum': AppImpressum
   }
 }
