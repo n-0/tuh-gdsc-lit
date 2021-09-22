@@ -73,7 +73,6 @@ export class AppWhat extends LitElement {
                 justify-content: center; 
                 gap: 25px;
                 height: 800px;
-                width: 99vw;
             }
 
             .title {
