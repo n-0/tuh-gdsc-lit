@@ -14,19 +14,19 @@ interface IEventCard {
 
 const demoEvents: IEventCard[] = [
     {
-        date: new Date(Date.UTC(2021, 10, 10)),
+        date: new Date(2021, 10, 10),
         title: 'Quantum Computing',
         description: 'Playing around with reality.',
         link: 'http://localhost:8080'
     },
     {
-        date: new Date(Date.UTC(2021, 11, 11)),
+        date: new Date(2021, 11, 11),
         title: 'Hackathon',
         description: 'May the force of code be with you.',
         link: 'http://localhost:8080'
     },
     {
-        date: new Date(Date.UTC(2021, 12, 12)),
+        date: new Date(2021, 12, 12),
         title: 'Pizza',
         description: 'Getting to know each others pizza tastes.',
         link: 'http://localhost:8080'
@@ -122,7 +122,7 @@ export class AppWhen extends LitElement {
         const eventCards = demoEvents.slice(this.page, 3*(this.page + 1)).map((event, index) => html`
             <div class="mdc-card mdc-card-${index}" itemscope itemtype="https://schema.org/Event">
                 <div class="mdc-card__title">
-                    <div class="mdc-card__title-date" itemprop="startDate"  content="${event.date.toISOString()}">
+                    <div class="mdc-card__title-date" itemprop="startDate"  content="${event.date.toString()}">
                         <h1>
                             ${event.date.getDate()}
                             <br>
