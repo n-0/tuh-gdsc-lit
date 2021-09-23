@@ -6,32 +6,33 @@ export class AppHome extends LitElement {
 
   static styles = css`
     .logo-wrapper {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%)
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    .base-wrapper {
-      display: flex;
+    @media (max-width: 900px) {
+        .logo-wrapper img {
+            max-width: 400px
+        }
     }
 
     `
 
     render() {
-      return html`<div class="base-wrapper">
+      return html`
         <div class="logo-wrapper">
-          <img 
-            src="src/assets/tuh-gdsc-logo-centered.png" 
-            class="logo"
-          />
-        </div>
-      </div>`
+            <img 
+                src="src/assets/tuh-gdsc-logo-centered.png" 
+                class="logo"
+            />
+        </div>`
     }
 }
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'app-home': AppHome;
-  }
+    interface HTMLElementTagNameMap {
+        'app-home': AppHome;
+    }
 }

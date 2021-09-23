@@ -21,6 +21,13 @@ export class AppMenu extends LitElement {
                 justify-content: flex-end;
                 z-index: 4;
             }
+            @media (max-width: 900px) {
+                .menu-icon-wrapper {
+                    top: 5px;
+                    right: 5px;
+                    justify-content: start;
+                }
+            }
             
             .menu-icon-wrapper button {
                 font-family: inherit;
@@ -35,24 +42,43 @@ export class AppMenu extends LitElement {
                 margin-right: 50px;
             }
 
+            @media (max-width: 900px) {
+                .menu-icon {
+                    max-width: 25px;
+                    margin-top: 5px;
+                    margin-right: 5px;
+                }
+            }
+
             .menu-page {
                 position: absolute;
-                width: 99vw;
-                height: 99vh;
-                text-align: center;
+                display: flex;
+                width: 100%;
+                height: 100%;
                 opacity: 0.9;
                 background-color: #fff;
-                z-index: 3;
+                z-index: 2;
+            }
+
+            .menu-list::before {
+                height: 100px;
             }
 
             .menu-list {
-                margin-top: 100px;
+                flex: 1 0 auto;
                 list-style: none;
                 display: flex;
+                justify-content: space-evenly;
                 flex-direction: column;
-                align-self: center;
+                text-align: center;
+                justify-self: center;
             }
 
+            @media (max-width: 900px) {
+                .menu-list {
+                    padding-left: 0;
+                }
+            }
             .menu-list > li {
                 list-style: none;
                 margin: 10px;
@@ -63,6 +89,12 @@ export class AppMenu extends LitElement {
                 text-decoration: none;
                 color: #5f6368;
                 opacity: 1;
+            }
+
+            @media (max-width: 900px) {
+                .menu-list a {
+                font-size: 1em;
+                }
             }
 
             .menu-list a:hover {

@@ -66,31 +66,72 @@ export class AppWhat extends LitElement {
 
     static styles = [fadeAnimations, specialColors, 
         css`
+            :host {
+                width: 100%;
+                height: 100%;
+            }
             .what {
                 display: grid;
+                height: 100%;
+                width: 100%;
                 grid-template-rows: 200px 100px 400px;
-                grid-template-columns: 335px 1fr 1fr 335px;
+                grid-template-columns: 10vw 1fr 1fr 10vw;
                 justify-content: center; 
                 gap: 25px;
-                height: 100%px;
-                width: 100%;
+            }
+
+            @media screen and (max-width: 900px) {
+                .what {
+                    grid-template-columns: 50px 1fr 50px;
+                    grid-template-rows: 150px 50px 300px;
+                }
             }
 
             .title {
                 display: flex;
                 grid-row: 1;
                 grid-column: 1;
-                justify-content: flex-end;
+            }
+
+            .title h1 {
                 font-size: 2.8em;
                 color: #5f6368;
+            }
+
+            @media screen and (max-width: 900px) {
+                .title {
+                    grid-row: 1;
+                    grid-column: 2;
+                    justify-content: center;
+                }
+
+                .title h1 {
+                    font-size: 2em;
+                    text-align: center;
+                }
             }
 
             .text-area {
                 box-sizing: border-box;
                 grid-row: 3;
                 grid-column: 2;
-                font-size: 2em;
                 animation: fade-in 1.5s cubic-bezier(.35,0,.15,1);
+            }
+
+            .text-area p {
+                font-size: 2em;
+            }
+
+            @media screen and (max-width: 900px) {
+                .text-area {
+                    grid-row: 2;
+                    grid-column: 2;
+                    text-align: center;
+                }
+
+                .text-area p {
+                    font-size: 0.5em;
+                }
             }
 
             .icon-area {
@@ -103,6 +144,14 @@ export class AppWhat extends LitElement {
                 animation: fade-in 0.3s cubic-bezier(.35,0,.15,1);
             }
 
+            @media screen and (max-width: 900px) {
+                .icon-area {
+                    grid-row: 3;
+                    grid-column: 2;
+                    text-align: center;
+                }
+            }
+
             .icon-area-2 {
                 display: grid;
                 grid-template-rows: repeat(3, 1fr);
@@ -111,6 +160,12 @@ export class AppWhat extends LitElement {
 
             .icon {
                 width: 100px;
+            }
+
+            @media screen and (max-width: 900px) {
+                .icon {
+                    width: 30px;
+                }
             }
 
             .icon-arrow-1 {
