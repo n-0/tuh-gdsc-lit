@@ -21,11 +21,29 @@ export class AppImpressum extends LitElement {
             height: 100%;
         }
 
+        @media screen and (max-width: 1200px) {
+            .impressum {
+                grid-template-columns: 50px 1fr 50px;
+                gap: 0px;
+            }
+        }
+        @media screen and (max-width: 1200px) {
+            .title {
+                text-align: center;
+            }
+        }
+
         .title {
             grid-row: 1;
             grid-column: 2;
             font-size: 2.8em;
             color: #5f6368;
+        }
+
+        @media screen and (max-width: 1200px) {
+            .title {
+                text-align: center;
+            }
         }
 
         .impressum-details {
@@ -35,6 +53,13 @@ export class AppImpressum extends LitElement {
             display: grid;
             gap: 25px;
             grid-template-columns: 200px 1fr 1fr 200px; /* subgrid in the future */
+        }
+
+        @media screen and (max-width: 1200px) {
+            .impressum-details {
+                grid-template-columns: 50px 1fr; /* subgrid in the future */
+                gap: 0;
+            }
         }
 
         .impressum-content {
@@ -49,6 +74,7 @@ export class AppImpressum extends LitElement {
 			border-radius: 4px;
 			transition: background-color 0.2s ease 0s, box-shadow 0.2s ease 0s, color 0.2s ease 0s, -webkit-box-shadow 0.2s ease 0s;
 		}
+
         button.chapter a {
             text-decoration: none;
 			color: #fff;

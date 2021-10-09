@@ -1,18 +1,17 @@
 import { LitElement, html, css } from 'lit'
-import { state } from 'lit/decorators'
+import { property } from 'lit/decorators'
 import { classMap } from 'lit/directives/class-map'
 import { customElement } from 'lit/decorators'
-import { fadeAnimations } from './styles'
+import { fadeAnimations, fonts } from './styles'
 
-@customElement('app-menu')
-export class AppMenu extends LitElement {
 
-    static styles = [fadeAnimations, 
-        css`
-            :host {
-                z-index: 3;
-            }
+const MenuButtonClick = new Event('menu-button-click', { bubbles: true, composed: true })
 
+@customElement('app-menu-button')
+class AppMenuButton extends LitElement {
+
+    static styles = [fonts, 
+            css`
             .menu-icon-wrapper {
                 display: flex;
                 position: absolute;
@@ -21,6 +20,7 @@ export class AppMenu extends LitElement {
                 justify-content: flex-end;
                 z-index: 4;
             }
+
             @media (max-width: 900px) {
                 .menu-icon-wrapper {
                     top: 5px;
@@ -48,6 +48,46 @@ export class AppMenu extends LitElement {
                     margin-top: 5px;
                     margin-right: 5px;
                 }
+            }
+    `]
+
+    @property({ type: Boolean, reflect: true }) open = false
+
+    render() {
+        const menuLogo = html` 
+            <img 
+                src="src/assets/${this.open ? 'gdsc-logo-gray.png' : 'gdsc-logo-color.png'}"
+                class="menu-icon"
+            /> 
+        `
+
+        return html`
+            <div 
+                class="menu-icon-wrapper"
+            >
+                <button
+                    @click=${() => this.dispatchEvent(MenuButtonClick)}
+                >
+                    ${menuLogo}
+                </button>
+            </div>
+        `
+    }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'app-menu-button': AppMenuButton;
+  }
+}
+
+@customElement('app-menu')
+export class AppMenu extends LitElement {
+
+    static styles = [fonts, fadeAnimations, 
+        css`
+            :host {
+                z-index: 3;
             }
 
             .menu-page {
@@ -91,12 +131,6 @@ export class AppMenu extends LitElement {
                 opacity: 1;
             }
 
-            @media (max-width: 900px) {
-                .menu-list a {
-                font-size: 1em;
-                }
-            }
-
             .menu-list a:hover {
                 color: #202124;
             }
@@ -106,7 +140,7 @@ export class AppMenu extends LitElement {
             }
 
             .menu-close {
-                animation: fade-out-down 0.3s forwards
+                animation: fade-out-down 0.3s forwards;
             }
 
             .menu-invisible {
@@ -114,12 +148,29 @@ export class AppMenu extends LitElement {
             }
         `]
 
-    @state()
-    open: boolean = false
-    @state()
-    hide: boolean = true
+    @property({ type: Boolean })
+    open = false
+    @property({ type: Boolean })  
+    toggle = false 
+
+    constructor() {
+        super()
+        this.addEventListener('animationend', (e) => {
+            if (
+                e.animationName == 'fade-out-down' ||
+                e.animationName == 'fade-in-up'
+                ) {
+                    this.toggle = false
+            }
+        })
+        this.addEventListener('menu-button-click', () => {
+            this.toggle = true
+            this.open = !this.open
+        })
+    }
 
     render() {
+        console.log(this.toggle)
         const links = ['home', 'what', 'when', 'who', 'impressum'].map(sub => html`
             <li>
                 <h1>
@@ -128,42 +179,18 @@ export class AppMenu extends LitElement {
             </li>
         `)
 
-        const menuLogo = (this.open) ? 
-            html`
-                    <img 
-                        src="src/assets/gdsc-logo-gray.png" 
-                        class="menu-icon"
-                    /> 
-            ` : html` 
-                    <img 
-                        src="src/assets/gdsc-logo-color.png" 
-                        class="menu-icon"
-                    /> 
-            `
+
         return html`
+            <app-menu-button ?open=${this.open}></app-menu-button>
             <div class=${classMap({ 
                     'menu-page': true, 
-                    'menu-open': this.open, 
-                    'menu-close': !this.open && !this.hide,
-                    'menu-invisible': this.hide })}
-                @animationend=${(e: AnimationEvent) => (e.animationName == 'fade-out-down') ? this.hide = true : null}
-                @click=${() => this.open = !this.open }
+                    'menu-open': this.toggle && this.open, 
+                    'menu-close': this.toggle && !this.open,
+                    'menu-invisible': !this.toggle && !this.open })}
             >
                 <ul class="menu-list">
                     ${links}
-                </uL>
-            </div>
-            <div 
-                class="menu-icon-wrapper"
-                @animationend=${(e: AnimationEvent) => (e.animationName == 'fade-in-up') ? this.hide = false : null}
-                @click=${() => { 
-                    this.open = !this.open 
-                    this.hide = false
-                }}
-            >
-                <button>
-                    ${menuLogo}
-            </button>
+                </ul>
             </div>
         `
     }

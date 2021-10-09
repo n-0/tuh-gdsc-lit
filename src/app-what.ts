@@ -1,10 +1,10 @@
 import { LitElement, html, css } from 'lit'
 import { customElement, state } from 'lit/decorators'
-import { fadeAnimations, specialColors } from './styles'
+import { fadeAnimations, fonts, specialColors } from './styles'
 
 const texts = [
     html`
-    <div class="text-area">
+    <div class="text-area subtitle">
         <p>Google Developer Student Clubs</p>
         <p>are <span class="google-green">community</span> groups  for college and</p>
         <p>university students interested in</p>
@@ -13,7 +13,7 @@ const texts = [
     </div>
     `,
     html`
-    <div class="text-area">
+    <div class="text-area subtitle">
         <p>Meet students interested in developer technologies at the <span class="tuh-blue">TUH</span>.</p>
         <p>All are welcome, including those with <span class="google-green">diverse</span> backgrounds and different majors.</p>
         <p>No matter if you feel comfortable in </p>
@@ -21,14 +21,14 @@ const texts = [
     </div>
     `,
     html`
-    <div class="text-area">
+    <div class="text-area subtitle">
         <p>It is a chance for you to <span class="google-yellow">learn</span> and <span class="google-yellow">grow</span></p> 
         <p>in a peer to peer environment in domains </p>
         <p>that our members are <span class="google-red">passionate</span> about.</p>
     </div>
     `,
     html`
-    <div class="text-area">
+    <div class="text-area subtitle">
         <p>Through hands-on workshops, events, talks,</p> 
         <p>and project-building activities - both online and in-person.</p>
         <p>We strive to <span class="google-blue">solve real life problems</span> and advance our career </p>
@@ -64,17 +64,18 @@ const icons = [
 @customElement('app-what')
 export class AppWhat extends LitElement {
 
-    static styles = [fadeAnimations, specialColors, 
+    static styles = [fonts, fadeAnimations, specialColors, 
         css`
             :host {
                 width: 100%;
                 height: 100%;
             }
+
             .what {
                 display: grid;
                 height: 100%;
                 width: 100%;
-                grid-template-rows: 200px 100px 400px;
+                grid-template-rows: 200px 1fr;
                 grid-template-columns: 10vw 1fr 1fr 10vw;
                 justify-content: center; 
                 gap: 25px;
@@ -83,43 +84,29 @@ export class AppWhat extends LitElement {
             @media screen and (max-width: 900px) {
                 .what {
                     grid-template-columns: 50px 1fr 50px;
-                    grid-template-rows: 150px 50px 300px;
+                    grid-template-rows: 150px 800px 1fr 30px;
                 }
             }
 
-            .title {
+            .title-wrapper {
                 display: flex;
                 grid-row: 1;
-                grid-column: 1;
-            }
-
-            .title h1 {
-                font-size: 2.8em;
-                color: #5f6368;
+                grid-column: 2;
             }
 
             @media screen and (max-width: 900px) {
-                .title {
+                .title-wrapper {
                     grid-row: 1;
                     grid-column: 2;
                     justify-content: center;
-                }
-
-                .title h1 {
-                    font-size: 2em;
-                    text-align: center;
                 }
             }
 
             .text-area {
                 box-sizing: border-box;
-                grid-row: 3;
+                grid-row: 2;
                 grid-column: 2;
                 animation: fade-in 1.5s cubic-bezier(.35,0,.15,1);
-            }
-
-            .text-area p {
-                font-size: 2em;
             }
 
             @media screen and (max-width: 900px) {
@@ -128,14 +115,10 @@ export class AppWhat extends LitElement {
                     grid-column: 2;
                     text-align: center;
                 }
-
-                .text-area p {
-                    font-size: 0.5em;
-                }
             }
 
             .icon-area {
-                grid-row: 3;
+                grid-row: 2;
                 grid-column: 3;
                 display: flex;
                 justify-items: center;
@@ -146,7 +129,7 @@ export class AppWhat extends LitElement {
 
             @media screen and (max-width: 900px) {
                 .icon-area {
-                    grid-row: 3;
+                    grid-row: 2;
                     grid-column: 2;
                     text-align: center;
                 }
@@ -187,7 +170,7 @@ export class AppWhat extends LitElement {
     render() {
         return html`
             <div class="what" @click=${() => (this.frame < 3) ? this.frame++ : null}>
-            <div class="title"><h1>What?</h1></div>
+            <div class="title-wrapper"><h1 class="title">What?</h1></div>
             ${texts[this.frame]}
             ${[0, 1].includes(this.frame) ? icons[0] : icons[1]}
           </div>

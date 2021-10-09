@@ -24,7 +24,7 @@ export class AppHome extends LitElement {
       return html`
         <div class="logo-wrapper">
             <img 
-                src="src/assets/tuh-gdsc-logo-centered.png" 
+                src="src/assets/tuh-gdsc-logo-centered.jpg" 
                 class="logo"
             />
         </div>`

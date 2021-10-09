@@ -3,7 +3,7 @@ import './app-home'
 import './app-what'
 import './app-when'
 import './app-who'
-import './app-contact'
+import './app-impressum'
 
 const outlet = document.getElementById('outlet')
 const router = new Router(outlet)
@@ -18,9 +18,9 @@ const routes = [
 ] 
 
 router.setRoutes(routes)
+/*
 let scrollAccumulator = 0
 let routeIndex = 1
-
 history.pushState({ routeIndex: 1}, '')
 // @ts-ignore
 window.onmousewheel = async (event: MouseEvent) => {
@@ -48,3 +48,4 @@ window.onmousewheel = async (event: MouseEvent) => {
 }
 
 document.getElementsByTagName('body')[0]!.onscroll = ((e) => console.log(e))
+*/

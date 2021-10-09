@@ -14,11 +14,42 @@ export class AppWho extends LitElement {
             height: 100%;
         }
 
+        @media screen and (max-width: 1900px) {
+            .who {
+                grid-template-columns: 100px 1fr 1fr 1fr 100px;
+                grid-template-rows: 200px 300px 300px;
+            }
+        }
+
+        @media screen and (max-width: 1200px) {
+            .who {
+                grid-template-columns: 50px 1fr 50px;
+                grid-template-rows: 200px 1fr;
+            }
+        }
+
         .title {
             grid-row: 1;
             grid-column: 2;
             font-size: 2.8em;
             color: #5f6368;
+        }
+
+        .who-text {
+            grid-row: 2;
+            grid-column: 2;
+            color: rgb(95, 99, 104);
+            font-size: 2em;
+        }
+
+        @media screen and (max-width: 1200px) {
+            .title {
+                text-align: center;
+            }
+
+            .who-text {
+                text-align: center;
+            }
         }
 
         .people {
@@ -28,16 +59,27 @@ export class AppWho extends LitElement {
             grid-column: 2 / 5;
         }
 
+        @media screen and (max-width: 1200px) {
+            .people {
+                display: flex;
+                flex-direction: column;
+                grid-column: 2;
+            }
+        }
+
         person-card {
             margin-right: 50px;
         }
 
-        .who-text {
-            grid-row: 2;
-            grid-column: 2;
-            color: rgb(95, 99, 104);
-            font-size: 2em;
+        @media screen and (max-width: 1200px) {
+            person-card {
+                margin: auto;
+                justify-self: center;
+                height: 350px;
+                width: 300px;
+            }
         }
+
       `
 
     render() {
@@ -79,24 +121,22 @@ export class AppWho extends LitElement {
 export class PersonCard extends LitElement {
 
     static styles = css`
+
         .business-card {
-            height: 350px;
-            width: 300px;
-            display: grid;
+            display: flex;
+            flex-direction: column;
         }
 
         .profile-picture {
-            justify-self: center;
             border-radius: 50%;
             height: 200px;
             width: 200px;
+            margin: auto;
         }
 
         .info {
             text-align: center;
         }
-
-        .name {}
 
         .title {
             font-style: italic;

@@ -2,7 +2,7 @@ import { LitElement, html, css } from 'lit'
 import { customElement, state } from 'lit/decorators'
 import { card } from './material/card'
 import { button } from './material/button'
-import { specialColors } from './styles'
+import { fonts, specialColors } from './styles'
 
 
 interface IEventCard {
@@ -36,31 +36,72 @@ const demoEvents: IEventCard[] = [
 @customElement('app-when')
 export class AppWhen extends LitElement {
 
-    static styles = [specialColors, button, card, css`
+    static styles = [fonts, specialColors, button, card, css`
         .when {
             display: grid;
-            grid-template-rows: 200px 100px 400px;
-            grid-template-columns: 335px 670px 670px 335px;
+            grid-template-rows: 200px 1fr 30px;
+            grid-template-columns: 200px 1fr 1fr 200px;
             gap: 25px;
-            height: 800px;
+            height: 100%;
+            width: 100%;
         }
 
-        .title {
+        @media screen and (max-width: 1900px) {
+            .when {
+                grid-template-columns: 100px 1fr 1fr 1fr 100px;
+                gap: 15px;
+            }
+        }
+
+        @media screen and (max-width: 1200px) {
+            .when {
+                grid-template-columns: 20px 1fr 20px;
+                grid-template-rows: 200px repeat(3, 350px);
+            }
+        }
+
+        .title-wrapper {
             grid-row: 1;
             grid-column: 2;
-            font-size: 2.8em;
-            color: #5f6368;
+        }
+
+        @media screen and (max-width: 1200px) {
+            .title-wrapper {
+                justify-self: center;
+            }
         }
 
         .mdc-card {
 			display: grid;
+            grid-row: 2;
             height: 420px;
             width: 320px;
+            justify-self: center;
+            align-self: center;
+        }
+
+        @media screen and (max-width: 1900px) {
+            .mdc-card {
+                height: 300px;
+            }
+        }
+
+        @media screen and (max-width: 1200px) {
+            .mdc-card {
+                width: 300px;
+                grid-row: auto;
+            }
         }
 
 		.mdc-card__media img {
-            width: 300px;
+            width: 100%;
 		}
+
+        @media screen and (max-width: 1900px) {
+            .mdc-card__media img {
+                width: 100%;
+            }
+        }
 
 		.mdc-icon-button.mdc-icon-button {
 			background-color: rgb(26, 115, 232);
@@ -95,23 +136,32 @@ export class AppWhen extends LitElement {
         }
 
         .mdc-card-0 {
-            grid-row: 3;
             grid-column: 2;
         }
 
         .mdc-card-1 {
-            grid-row: 2 / 3;
             grid-column: 3;
         }
 
         .mdc-card-2 {
-            grid-row: 3;
             grid-column: 4;
 
         }
 
-
-        
+        @media screen and (max-width: 1200px) {
+            .mdc-card-1 {
+                grid-column: 2;
+                grid-row: 2;
+            }
+            .mdc-card-2 {
+                grid-column: 2;
+                grid-row: 3;
+            }
+            .mdc-card-3 {
+                grid-column: 2;
+                grid-row: 4;
+            }
+        }
    `]
 
     @state()
@@ -148,8 +198,8 @@ export class AppWhen extends LitElement {
         `)
         return html`
         <div class="when">
-            <div class="title">
-                <h1>When</h1>
+            <div class="title-wrapper">
+                <h1 class="title">When</h1>
             </div>
             ${eventCards}
         </div>`
