@@ -5,7 +5,7 @@ import { customElement } from 'lit/decorators'
 import { fadeAnimations, fonts } from './styles'
 
 
-const MenuButtonClick = new Event('menu-button-click', { bubbles: true, composed: true })
+const MenuButtonClick = new CustomEvent('menu-button-click', { bubbles: true, composed: true })
 
 @customElement('app-menu-button')
 class AppMenuButton extends LitElement {
@@ -51,7 +51,7 @@ class AppMenuButton extends LitElement {
             }
     `]
 
-    @property({ type: Boolean, reflect: true }) open = false
+    @property({ type: Boolean }) open = false
 
     render() {
         const menuLogo = html` 
@@ -140,7 +140,7 @@ export class AppMenu extends LitElement {
             }
 
             .menu-close {
-                animation: fade-out-down 0.3s forwards;
+                animation: fade-out-down 0.3s;
             }
 
             .menu-invisible {
@@ -150,30 +150,31 @@ export class AppMenu extends LitElement {
 
     @property({ type: Boolean })
     open = false
-    @property({ type: Boolean })  
+    @property({ type: Boolean, reflect: true })
     toggle = false 
+
+    private _animationend(e: AnimationEvent) {
+        if (
+            e.animationName == 'fade-out-down' ||
+            e.animationName == 'fade-in-up'
+            ) {
+                this.toggle = false
+        }
+
+    }
 
     constructor() {
         super()
-        this.addEventListener('animationend', (e) => {
-            if (
-                e.animationName == 'fade-out-down' ||
-                e.animationName == 'fade-in-up'
-                ) {
-                    this.toggle = false
-            }
-        })
-        this.addEventListener('menu-button-click', () => {
+        this.addEventListener(MenuButtonClick.type, () => {
             this.toggle = true
             this.open = !this.open
         })
     }
 
     render() {
-        console.log(this.toggle)
         const links = ['home', 'what', 'when', 'who', 'impressum'].map(sub => html`
             <li>
-                <h1>
+                <h1 @click=${() => this.dispatchEvent(MenuButtonClick)}>
                     <a href="/${sub}">${sub.charAt(0).toUpperCase() + sub.slice(1)} </a>
                 </h1>
             </li>
@@ -182,7 +183,9 @@ export class AppMenu extends LitElement {
 
         return html`
             <app-menu-button ?open=${this.open}></app-menu-button>
-            <div class=${classMap({ 
+            <div 
+                @animationend=${this._animationend}
+                class=${classMap({ 
                     'menu-page': true, 
                     'menu-open': this.toggle && this.open, 
                     'menu-close': this.toggle && !this.open,

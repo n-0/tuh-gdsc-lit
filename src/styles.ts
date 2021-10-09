@@ -127,7 +127,6 @@ export const fadeAnimations = css`
             to {
                 transform: translateY(-80px);
                 opacity: 0;
-                display: none;
             }
         }
 `
