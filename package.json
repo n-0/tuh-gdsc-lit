@@ -39,6 +39,7 @@
   "dependencies": {
     "@material/button": "^12.0.0",
     "@material/card": "^12.0.0",
+    "@material/top-app-bar": "^13.0.0",
     "@vaadin/router": "^1.7.4",
     "lit": "^2.0.0-rc.4"
   },

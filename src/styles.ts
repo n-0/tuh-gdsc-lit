@@ -1,6 +1,5 @@
 import { css } from 'lit'
 
-
 /**
  * breakpoints
  * sm - 600px
@@ -26,6 +25,7 @@ export const fonts = css`
         font-size: 8em;
         letter-spacing: 0.25;
         color: #5f6368;
+        margin: 0;
     }
 
     .subtitle {
@@ -129,4 +129,47 @@ export const fadeAnimations = css`
                 opacity: 0;
             }
         }
+`
+
+
+export const layout = css`
+    .container {
+        display: grid;
+        grid-template-rows: 20px 200px 1fr;
+        grid-template-columns: 10vw 1fr 10vw;
+        height: 100%;
+        width: 100%;
+        gap: 20px;
+    }
+
+    @media screen and (max-width: 1200px) {
+        .container {
+            grid-template-rows: 20px 150px 1fr 1fr;
+            grid-template-columns: 50px 1fr 50px;
+            gap: 15px;
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        .container {
+            grid-template-rows: 56px 150px 1fr 1fr;
+            grid-template-columns: 20px 1fr 20px;
+            gap: 15px;
+        }
+    }
+
+    .title-wrapper {
+        display: flex;
+        align-items: center;
+        grid-row: 2;
+        grid-column: 2;
+        color: #5f6368;
+    }
+
+    @media screen and (max-width: 1200px) {
+        .title-wrapper {
+            justify-content: center;
+            grid-row: 2;
+        }
+    }
 `

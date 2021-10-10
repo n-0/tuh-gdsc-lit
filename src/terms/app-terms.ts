@@ -1,68 +1,38 @@
 import { LitElement, html, css } from 'lit'
 import { customElement } from 'lit/decorators'
+import { fonts, layout } from '../styles'
 
 
-@customElement('app-impressum')
-export class AppImpressum extends LitElement {
+@customElement('app-terms')
+export class AppTerms extends LitElement {
 
 
-    static styles = css`
+    static styles = [
+        layout,
+        fonts, 
+        css`
         :host {
             height: 100%;
             width: 100%;
         }
 
-        .impressum {
-            display: grid;
-            grid-template-rows: 200px 1fr;
-            grid-template-columns: 200px 1fr 1fr 200px;
-            gap: 25px;
-            width: 100%;
-            height: 100%;
-        }
-
-        @media screen and (max-width: 1200px) {
-            .impressum {
-                grid-template-columns: 50px 1fr 50px;
-                gap: 0px;
-            }
-        }
-        @media screen and (max-width: 1200px) {
-            .title {
-                text-align: center;
-            }
-        }
-
-        .title {
-            grid-row: 1;
-            grid-column: 2;
-            font-size: 2.8em;
-            color: #5f6368;
-        }
-
-        @media screen and (max-width: 1200px) {
-            .title {
-                text-align: center;
-            }
-        }
-
-        .impressum-details {
+        .terms-details {
             background-color: rgb(232, 234, 237);
-            grid-row: 2 / 3;
-            grid-column: 1 / 5;
+            grid-row: 3 / 5;
+            grid-column: 1 / 4;
             display: grid;
             gap: 25px;
             grid-template-columns: 200px 1fr 1fr 200px; /* subgrid in the future */
         }
 
         @media screen and (max-width: 1200px) {
-            .impressum-details {
+            .terms-details {
                 grid-template-columns: 50px 1fr; /* subgrid in the future */
                 gap: 0;
             }
         }
 
-        .impressum-content {
+        .terms-content {
             grid-column: 2;
         }
 
@@ -81,16 +51,15 @@ export class AppImpressum extends LitElement {
 			font-weight: 500;
 			font-family: "Google Sans", Roboto, Arial, Helvetica, sans-serif;
         }
-        
-    `
+    `]
 
     render() {
-        return html`<div class="impressum">
-            <div class="title">
-                <h1>Impressum</h1>
+        return html`<div class="terms container">
+            <div class="title-wrapper">
+                <h1 class="title">Terms</h1>
             </div>
-            <div class="impressum-details">
-                <div class="impressum-content">
+            <div class="terms-details">
+                <div class="terms-content">
                     <h1>
                         Contact us via our GDSC Chapter
                     </h1>
@@ -105,6 +74,6 @@ export class AppImpressum extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'app-impressum': AppImpressum
+    'app-terms': AppTerms
   }
 }

@@ -1,6 +1,6 @@
 import { css } from 'lit'
 
-export const button = css`
+export const mdcButton = css`
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.

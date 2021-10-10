@@ -17,7 +17,6 @@ export class AppHome extends LitElement {
             max-width: 400px
         }
     }
-
     `
 
     render() {
