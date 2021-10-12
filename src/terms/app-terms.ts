@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit'
 import { customElement } from 'lit/decorators'
 import { fonts, layout } from '../styles'
+import { terms } from './terms'
 
 
 @customElement('app-terms')
@@ -16,6 +17,10 @@ export class AppTerms extends LitElement {
             width: 100%;
         }
 
+        .container {
+            height: auto;
+        }
+
         .terms-details {
             background-color: rgb(232, 234, 237);
             grid-row: 3 / 5;
@@ -27,7 +32,7 @@ export class AppTerms extends LitElement {
 
         @media screen and (max-width: 1200px) {
             .terms-details {
-                grid-template-columns: 50px 1fr; /* subgrid in the future */
+                grid-template-columns: 20px 1fr 20px; /* subgrid in the future */
                 gap: 0;
             }
         }
@@ -60,6 +65,7 @@ export class AppTerms extends LitElement {
             </div>
             <div class="terms-details">
                 <div class="terms-content">
+                    ${terms}
                     <h1>
                         Contact us via our GDSC Chapter
                     </h1>

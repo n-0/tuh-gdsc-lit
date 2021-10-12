@@ -46,10 +46,13 @@ export class AppNav extends LitElement {
                 .menu-list {
                     padding-left: 0;
                 }
+
+                .menu-list:first-child {
+                    margin-top: 65px;
+                }
             }
             .menu-list > li {
                 list-style: none;
-                margin: 10px;
             }
 
             .menu-list a {
