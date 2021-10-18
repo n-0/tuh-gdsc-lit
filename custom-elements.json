@@ -79,58 +79,6 @@
           "default": "\"css`\\n        .who {\\n            display: grid;\\n            grid-template-rows: 200px 100px 400px;\\n            grid-template-columns: 335px 670px 670px 335px;\\n            gap: 25px;\\n            height: 800px;\\n        }\\n\\n        .title {\\n            grid-row: 1;\\n            grid-column: 2;\\n            font-size: 2.8em;\\n            color: #5f6368;\\n        }\\n      `\""
         }
       ]
-    },
-    {
-      "name": "my-element",
-      "path": "./src/my-element.ts",
-      "description": "An example element.",
-      "attributes": [
-        {
-          "name": "name",
-          "description": "The name to say \"Hello\" to.",
-          "type": "string",
-          "default": "\"World\""
-        },
-        {
-          "name": "count",
-          "description": "The number of times the button has been clicked.",
-          "type": "number",
-          "default": "0"
-        }
-      ],
-      "properties": [
-        {
-          "name": "styles",
-          "type": "CSSResult",
-          "default": "\"css`\\n    :host {\\n      display: block;\\n      border: solid 1px gray;\\n      padding: 16px;\\n      max-width: 800px;\\n    }\\n  `\""
-        },
-        {
-          "name": "name",
-          "attribute": "name",
-          "description": "The name to say \"Hello\" to.",
-          "type": "string",
-          "default": "\"World\""
-        },
-        {
-          "name": "count",
-          "attribute": "count",
-          "description": "The number of times the button has been clicked.",
-          "type": "number",
-          "default": "0"
-        }
-      ],
-      "slots": [
-        {
-          "name": "",
-          "description": "This element has a slot"
-        }
-      ],
-      "cssParts": [
-        {
-          "name": "button",
-          "description": "The button"
-        }
-      ]
     }
   ]
 }

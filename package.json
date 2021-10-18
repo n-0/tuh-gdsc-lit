@@ -34,7 +34,16 @@
     "typescript",
     "lit"
   ],
-  "author": "Google LLC",
+  "contributors": [
+    {
+      "name": "Niklas Jona Lohmann",
+      "url": "https://njl.pw"
+    },
+    {
+      "name": "Google LLC",
+      "url": "https://google.org"
+    }
+  ],
   "license": "BSD-3-Clause",
   "dependencies": {
     "@material/button": "^12.0.0",
@@ -44,8 +53,6 @@
     "lit": "^2.0.0-rc.4"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.2",
     "@esm-bundle/chai": "^4.3.4",
     "@open-wc/testing": "^2.5.33",
     "@open-wc/testing-karma": "^4.0.9",

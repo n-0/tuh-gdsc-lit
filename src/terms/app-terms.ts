@@ -28,6 +28,7 @@ export class AppTerms extends LitElement {
             display: grid;
             gap: 25px;
             grid-template-columns: 200px 1fr 1fr 200px; /* subgrid in the future */
+            padding-bottom: 25px;
         }
 
         @media screen and (max-width: 1200px) {

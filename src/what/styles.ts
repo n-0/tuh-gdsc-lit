@@ -58,6 +58,7 @@ export const whatStyles = css`
         justify-content: space-evenly;
         align-items: center;
         animation: fade-in 0.3s cubic-bezier(.35,0,.15,1);
+        margin-bottom: 25px;
     }
 
     @media screen and (max-width: 1200px) {
@@ -86,7 +87,8 @@ export const whatStyles = css`
 
     @media screen and (max-width: 900px) {
         .icon {
-            width: 30px;
+            width: 70px;
+            height: 70px;
         }
     }
 

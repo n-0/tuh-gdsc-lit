@@ -137,8 +137,8 @@ export const layout = css`
         display: grid;
         grid-template-rows: 20px 200px 1fr;
         grid-template-columns: 10vw 1fr 10vw;
-        height: 100%;
         width: 100%;
+        min-height: 100%;
         gap: 20px;
     }
 
