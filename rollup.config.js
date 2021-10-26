@@ -3,36 +3,39 @@
  * Copyright 2018 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-
-import summary from 'rollup-plugin-summary';
-import { terser } from 'rollup-plugin-terser';
+import html from '@web/rollup-plugin-html';
+import {copy} from '@web/rollup-plugin-copy';
 import resolve from '@rollup/plugin-node-resolve';
-import replace from '@rollup/plugin-replace';
+import {terser} from 'rollup-plugin-terser';
+import minifyHTML from 'rollup-plugin-minify-html-literals';
+import summary from 'rollup-plugin-summary';
 
 export default {
-  input: 'build/my-element.js',
-  output: {
-    file: 'build/my-element.bundled.js',
-    format: 'esm',
-  },
-  onwarn(warning) {
-    if (warning.code !== 'THIS_IS_UNDEFINED') {
-      console.error(`(!) ${warning.message}`);
-    }
-  },
   plugins: [
-    replace({'Reflect.decorate': 'undefined'}),
+    // Entry point for application build; can specify a glob to build multiple
+    // HTML files for non-SPA app
+    html({
+      input: 'dev/index.html',
+    }),
+    // Resolve bare module specifiers to relative paths
     resolve(),
+    // Minify HTML template literals
+    minifyHTML(),
+    // Minify JS
     terser({
-      ecma: 2017,
+      ecma: 2020,
       module: true,
       warnings: true,
-      mangle: {
-        properties: {
-          regex: /^__/,
-        },
-      },
     }),
+    // Print bundle summary
     summary(),
+    // Optional: copy any static assets to build directory
+    copy({
+      patterns: ['dev\/*.{txt|xml}', 'src/assets/**/*'],
+    }),
   ],
+  output: {
+    dir: 'prod',
+  },
+  preserveEntrySignatures: 'strict',
 };

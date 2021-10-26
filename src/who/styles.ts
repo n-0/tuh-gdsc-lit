@@ -2,12 +2,7 @@ import { css } from 'lit'
 
 export const whoStyles = css`
 
-    .who {
-        grid-template-rows: 20px 150px 1fr 1fr;
-    }
     .who-text {
-        margin-top: auto;
-        margin-bottom: auto;
         grid-row: 3;
         grid-column: 2;
         /* color: rgb(95, 99, 104); */

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>https://tuh-gdsc.dev/</loc>
+      <lastmod>2021-26-10</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+  </url>
+  <ur>
+      <loc>https://tuh-gdsc.dev/what</loc>
+      <lastmod>2021-26-10</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+  </url>
+  <ur>
+      <loc>https://tuh-gdsc.dev/when</loc>
+      <lastmod>2021-26-10</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.4</priority>
+  </url>
+  <ur>
+      <loc>https://tuh-gdsc.dev/who</loc>
+      <lastmod>2021-26-10</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.3</priority>
+  </url>
+  <ur>
+      <loc>https://tuh-gdsc.dev/terms</loc>
+      <lastmod>2021-26-10</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.3</priority>
+  </url>
+</urlset>
+

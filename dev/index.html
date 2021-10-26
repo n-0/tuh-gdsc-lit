@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>GDSC TUH</title>
-    <link 
+    <link
       rel="icon"
-      href="https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_32,q_auto:good,w_32/v1/gcs/platform-data-dsc/contentbuilder/favicon.png"
+      href="../src/assets/favicon.png"
     >
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/lit/polyfill-support.js"></script>
@@ -30,6 +30,40 @@
         width: 100%;
       }
     </style>
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "TUH GDSC",
+          "email": "gdsc.tuh@gmail.com",
+          "description": "Google Developer Student Clubs are university based community groups for students interested in (Google) developer technologies. GDSC bridges the gap between theory and practice. Students from all undergraduate or graduate programs with an interest in growing as a developer are welcome. We are the chapter of the University of Technology in Hamburg.",
+          "url": "tuh-gdsc.dev",
+          "address": {
+            "@context": "https://schema.org",
+            "@type": "Place",
+            "address": {
+              "@context": "https://schema.org",
+              "@type": "PostalAddress",
+              "addressCountry": "Germany",
+              "addressRegion": "Hamburg",
+              "addressLocality": "Harburg",
+              "postalCode": "21073",
+              "streetAddress": "Am Schwarzenberg-Campus 1"
+            }
+          },
+          "sponsor": {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "AStA TUH"
+          },
+          "memberOf": {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Google Developer Student Clubs",
+              "url": "gdsc.community.dev"
+          }
+        }
+      </script>
   </head>
   <body>
     <app-nav></app-nav>

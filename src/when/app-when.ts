@@ -29,6 +29,10 @@ export class AppWhen extends LitElement {
                 .events {
                     flex-direction: column;
                 }
+
+                .container {
+                    grid-template-rows: 56px 150px 1fr;
+                }
             }
         `
     ]
