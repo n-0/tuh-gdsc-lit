@@ -30,9 +30,13 @@ export default {
     // Print bundle summary
     summary(),
     // Optional: copy any static assets to build directory
+    // Unfortunately patterns aren't matched well
+    // switching to cdn
+    /*
     copy({
-      patterns: ['dev\/*.{txt|xml}', 'src/assets/**/*'],
+      patterns: [],
     }),
+    */
   ],
   output: {
     dir: 'prod',

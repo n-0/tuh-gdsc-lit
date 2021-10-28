@@ -60,10 +60,10 @@ export class PersonCard extends LitElement {
             </div>
             <div class="social-media">
                 <a href=${this.socialMedia.linkedin}>
-                    <img src="src/assets/social-media-icons/linkedin.png" />
-                </a>
+                    <img src="https://cdn.tuh-gdsc.dev/assets/social-media-icons/linkedin.png" />
+               </a>
                 <a href=${this.socialMedia.instagram}>
-                <img src="src/assets/social-media-icons/instagram.png" />
+                <img src="https://cdn.tuh-gdsc.dev/assets/social-media-icons/instagram.png" />
                 </a>
                 <a href=${this.socialMedia.googleDevelopers}>
                 <img src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA" />

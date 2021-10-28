@@ -29,7 +29,7 @@ class AppNavButton extends LitElement {
                     justify-content: start;
                 }
             }
-            
+
             .menu-icon-wrapper button {
                 font-family: inherit;
                 border: none;
@@ -54,15 +54,15 @@ class AppNavButton extends LitElement {
     @property({ type: Boolean }) open = false
 
     render() {
-        const menuLogo = html` 
-            <img 
-                src="src/assets/${this.open ? 'gdsc-logo-gray.png' : 'gdsc-logo-color.png'}"
+        const menuLogo = html`
+            <img
+                src="https://cdn.tuh-gdsc.dev/assets/${this.open ? 'gdsc-logo-gray.png' : 'gdsc-logo-color.png'}"
                 class="menu-icon"
-            /> 
+            />
         `
 
         return html`
-            <div 
+            <div
                 class="menu-icon-wrapper"
             >
                 <button

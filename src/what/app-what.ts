@@ -7,7 +7,7 @@ const texts = [
     html`
     <div class="text-area subtitle">
         Google Developer Student Clubs<br>
-        are <span class="google-green">community</span> groups  for college and university students interested<br> 
+        are <span class="google-green">community</span> groups  for college and university students interested<br>
         in Google developer technologies.<br>
         We are the chapter for the <span class="tuh-blue">TUH</span>!<br>
     </div>
@@ -29,7 +29,7 @@ const texts = [
     `,
     html`
     <div class="text-area subtitle">
-        Through hands-on workshops, events, talks, and project-building<br> 
+        Through hands-on workshops, events, talks, and project-building<br>
         activities - both online and in-person.<br>
         We strive to <span class="google-blue">solve real life problems</span> and advance our career oriented<br>
         skills both hard and soft.<br>
@@ -41,9 +41,9 @@ const texts = [
 const icons = [
     html`
     <div class="icon-area">
-        <img class="icon" src="src/assets/tuh-favicon.ico" />
+        <img class="icon" src="https://cdn.tuh-gdsc.dev/assets/tuh-favicon.ico" />
         <img class="icon" src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/000000/external-group-business-and-management-kiranshastry-lineal-kiranshastry-2.png"/>
-        <img class="icon" src="src/assets/google-g-logo.png" />
+        <img class="icon" src="https://cdn.tuh-gdsc.dev/assets/google-g-logo.png" />
     </div>
     `,
     html`
@@ -65,9 +65,9 @@ const icons = [
 export class AppWhat extends LitElement {
 
     static styles = [
-        layout, 
-        fonts, 
-        fadeAnimations, 
+        layout,
+        fonts,
+        fadeAnimations,
         specialColors,
         whatStyles
     ]

@@ -37,7 +37,7 @@ class EventCard extends LitElement {
 
     static styles = [
         fonts,
-        mdcButton, 
+        mdcButton,
         card,
         css`
             :host {
@@ -129,15 +129,15 @@ class EventCard extends LitElement {
                     </div>
                 </div>
                 <div class="mdc-card__media">
-					<img src="src/assets/tuh-gdsc-logo-centered.png" />
+					<img src="https://cdn.tuh-gdsc.dev/assets/tuh-gdsc-logo-centered.png" />
                 </div>
                 <div class="mdc-card__content">
-                    ${this.event.description} 
+                    ${this.event.description}
                 </div>
 				<button class="mdc-icon-button mdc-card__action mdc-card__action--icon">
 					<h2>Register</h2>
 				</button>
-            </div> 
+            </div>
         `
 
 

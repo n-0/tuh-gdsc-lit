@@ -17,13 +17,13 @@ export class AppHome extends LitElement {
             max-width: 400px
         }
     }
-    `
+   `
 
     render() {
       return html`
         <div class="logo-wrapper">
-            <img 
-                src="src/assets/tuh-gdsc-logo-centered.jpg" 
+            <img
+                src="https://cdn.tuh-gdsc.dev/assets/tuh-gdsc-logo-centered.jpg"
                 class="logo"
             />
         </div>`

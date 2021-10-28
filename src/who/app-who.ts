@@ -9,7 +9,7 @@ import './person-card'
 export class AppWho extends LitElement {
 
     static styles = [
-        fonts, 
+        fonts,
         layout,
         whoStyles
     ]
@@ -27,23 +27,21 @@ export class AppWho extends LitElement {
                 the coding factory!<br>
             </h2>
             <div class="people">
-                <person-card 
-                    name="Niki" 
-                    title="Lead" 
-                    profilePicture="https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_3,f_auto,g_face,h_130,q_auto:good,w_130/v1/gcs/platform-data-dsc/avatars/n-o-o-n_niki.jpg"
-                /></person-card>
-                <person-card 
-                    name="Lennard" 
-                    title="Core Team member" 
-                /></person-card>
-                <person-card 
-                    name="Denise" 
-                    title="Core Team member" 
-                /></person-card>
-                <person-card 
-                    name="Aasma" 
-                    title="Core Team member" 
-                /></person-card>
+               <person-card
+                    name="Niki"
+                    title="Lead"
+                    profilePicture="assets/who/niki.jpg"
+                ></person-card>
+                <person-card
+                    name="Lennard"
+                    title="Core Team member"
+                    profilePicture="assets/who/lennard-1.jpg"
+                ></person-card>
+                <person-card
+                    name="Aasma"
+                    title="Core Team member"
+                    profilePicture="assets/who/aasma-1.jpg"
+                ></person-card>
             </div>
         </div>`
     }
